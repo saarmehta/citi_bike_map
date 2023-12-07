@@ -60,31 +60,31 @@ info.addTo(map);
 var icons = {
   COMING_SOON: L.ExtraMarkers.icon({
     icon: "ion-settings",
-    iconColor: "white",
+    iconColor: "red",
     markerColor: "yellow",
     shape: "star"
   }),
   EMPTY: L.ExtraMarkers.icon({
     icon: "ion-android-bicycle",
-    iconColor: "white",
+    iconColor: "red",
     markerColor: "red",
     shape: "circle"
   }),
   OUT_OF_ORDER: L.ExtraMarkers.icon({
     icon: "ion-minus-circled",
-    iconColor: "white",
+    iconColor: "red",
     markerColor: "blue-dark",
     shape: "penta"
   }),
   LOW: L.ExtraMarkers.icon({
     icon: "ion-android-bicycle",
-    iconColor: "white",
+    iconColor: "red",
     markerColor: "orange",
     shape: "circle"
   }),
   NORMAL: L.ExtraMarkers.icon({
     icon: "ion-android-bicycle",
-    iconColor: "white",
+    iconColor: "red",
     markerColor: "green",
     shape: "circle"
   })
@@ -144,6 +144,9 @@ d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(fu
         icon: icons[stationStatusCode]
       });
 
+
+      console.log(station)
+
       // Add the new marker to the appropriate layer.
       newMarker.addTo(layers[stationStatusCode]);
 
@@ -154,7 +157,15 @@ d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(fu
     // Call the updateLegend function, which will update the legend!
     updateLegend(updatedAt, stationCount);
   });
+
+ 
+
 });
+
+
+
+
+
 
 // Update the legend's innerHTML with the last updated time and station count.
 function updateLegend(time, stationCount) {
